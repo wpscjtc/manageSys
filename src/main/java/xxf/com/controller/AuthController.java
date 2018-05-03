@@ -46,6 +46,7 @@ public class AuthController {
     @Authorization
     public String chanegRoleAuth(int roleId,int authId,int orgId) {
         String result=authService.chanegRoleAuth(roleId,authId,orgId);
+        System.out.println(123);
         return result;
     }
     /**
