@@ -1,0 +1,2 @@
+var toolHtml="";
+getTable("/user/listUsers",{pageNum:1},{"userID":"用户ID","name":"用户名","grade":"用户类别","statusName":"允许登录","orgNmae":"隶属组织"} ,{"userID":"用户ID","name":"用户名"},"userTable","userID",{"grade":{"0":"内部员工","1":"外部客户","2":"开发人员","3":"系统管理员","4":"Webservice调用用户"}});

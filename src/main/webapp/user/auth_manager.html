@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>全面预算管理系统 </title>
+    <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="../vendors/nprogress/nprogress.css" rel="stylesheet">
+    <link href="../vendors/iCheck/skins/flat/green.css" rel="stylesheet">
+    <link href="../vendors/google-code-prettify/bin/prettify.min.css" rel="stylesheet">
+    <link href="../vendors/select2/dist/css/select2.min.css" rel="stylesheet">
+    <link href="../vendors/switchery/dist/switchery.min.css" rel="stylesheet">
+    <link href="../vendors/starrr/dist/starrr.css" rel="stylesheet">
+    <link href="../vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+    <link href="../build/css/custom.min.css" rel="stylesheet">
+    <link href='../css/lib/messenger.css' rel='stylesheet'>
+    <link href='../css/lib/messenger-spinner.css' rel='stylesheet'>
+    <link href='../css/lib/messenger-theme-air.css' rel='stylesheet'>
+    <link href='../css/lib/messenger-theme-block.css' rel='stylesheet'>
+    <link href='../css/lib/messenger-theme-flat.css' rel='stylesheet'>
+    <link href='../css/lib/messenger-theme-future.css' rel='stylesheet'>
+    <link href='../css/lib/messenger-theme-ice.css' rel='stylesheet'>
+
+    <script src="../vendors/jquery/dist/jquery.min.js"></script>
+    <script src='/js/lib/messenger.min.js'></script>
+    <script src='/js/lib/messenger-theme-flat.js'></script>
+    <script src='/js/lib/messenger-theme-future.js'></script>
+    <script language=javascript src="/js/main/main.js"></script>
+    <script src="../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="../vendors/iCheck/icheck.min.js"></script>
+    <script src="../vendors/google-code-prettify/src/prettify.js"></script>
+    <script src="../vendors/switchery/dist/switchery.min.js"></script>
+
+</head>
+
+<body class="nav-md">
+
+
+
+<!-- 修改权限-->          <!-- 修改显示div ID-->
+<div class="modal fade" id="updateAuth" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class=" mid_center" style="width: 40%">
+        <div class="x_panel">
+            <div class="x_content">
+
+                                                                           <!-- 修改form ID-->
+                <form class="form-horizontal form-label-left" novalidate id="updateAuthForm">
+                    <fieldset id="updateFormSet" >
+                        <span class="section">权限</span>
+                        <input id="AuthID" class="form-control col-md-7 col-xs-6"  name="AuthID"  type="hidden">
+                        <div class="item form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-8" for="authName">权限名 <span class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-6">
+                                <input id="authName" class="form-control col-md-7 col-xs-6" data-validate-length-range="6" data-validate-words="2" name="authName" placeholder="" required="required" type="text">
+                            </div>
+                        </div>
+                        <div class="item form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-6" for="authType">权限类型 <span class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-6">
+                                <input id="authType" class="form-control col-md-7 col-xs-6" data-validate-length-range="6" data-validate-words="2" name="authType" placeholder="" required="required" type="text">
+                            </div>
+                        </div>
+                        <div class="item form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-6" for="authWay">权限点 <span class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-6">
+                                <input id="authWay" class="form-control col-md-7 col-xs-6" data-validate-length-range="6" data-validate-words="2" name="authWay" placeholder="" required="required" type="text">
+                            </div>
+                        </div>
+                        <div class="item form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="authDesc">权限介绍
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <textarea id="authDesc"  name="authDesc" class="form-control col-md-7 col-xs-12"></textarea>
+                            </div>
+                        </div>
+                        <div class="item form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="authMethod">限制接口
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <textarea id="authMethod"  name="authMethod" class="form-control col-md-7 col-xs-12"></textarea>
+                            </div>
+                        </div>
+                    </fieldset>
+                    <div class="ln_solid"></div>
+                    <div class="form-group">
+                        <div class="col-md-6 col-md-offset-3">
+                            <button type="button" id="authClose" class="btn btn-default" data-dismiss="modal">关闭</button>
+                            <a id="sendAuthFormForUpdate"  class="btn btn-success">提交</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+
+<!-- 新增权限出框-->
+<div class="modal fade" id="addAuth" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class=" mid_center" style="width: 40%">
+        <div class="x_panel">
+            <div class="x_content">
+
+                <form class="form-horizontal form-label-left" novalidate id="addAuthForm">
+
+                    <span class="section">新增权限</span>
+
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-8" for="authName">权限名 <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-6">
+                            <input id="authName" class="form-control col-md-7 col-xs-6" data-validate-length-range="6" data-validate-words="2" name="authName" placeholder="" required="required" type="text">
+                        </div>
+                    </div>
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-6" for="authType">权限类型 <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-6">
+                            <input id="authType" class="form-control col-md-7 col-xs-6" data-validate-length-range="6" data-validate-words="2" name="authType" placeholder="" required="required" type="text">
+                        </div>
+                    </div>
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-6" for="authWay">权限点 <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-6">
+                            <input id="authWay" class="form-control col-md-7 col-xs-6" data-validate-length-range="6" data-validate-words="2" name="authWay" placeholder="" required="required" type="text">
+                        </div>
+                    </div>
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="authDesc">权限介绍
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <textarea id="authDesc"  name="authDesc" class="form-control col-md-7 col-xs-12"></textarea>
+                        </div>
+                    </div>
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="authMethod">限制接口
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <textarea id="authMethod"  name="authMethod" class="form-control col-md-7 col-xs-12"></textarea>
+                        </div>
+                    </div>
+                    <div class="ln_solid"></div>
+                    <div class="form-group">
+                        <div class="col-md-6 col-md-offset-3">
+                            <button type="button" id="authClose" class="btn btn-default" data-dismiss="modal">关闭</button>
+                            <a id="sendAuthForm"  class="btn btn-success">提交</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<div class="container body">
+    <div class="main_container">
+        <!-- left navigation -->
+        <script type="text/javascript" src="/js/menu/left.js"></script>
+        <!-- /left navigation -->
+
+        <!-- top navigation -->
+        <script type="text/javascript" src="/js/menu/top.js"></script>
+        <!-- /top navigation -->
+
+        <!-- page content -->
+        <div class="right_col" role="main" >
+            <div class>
+                <div class="row" >
+                    <div class='col-md-12 col-sm-12 col-xs-12' id="authTable">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- /page content -->
+
+    <!-- footer content -->
+    <footer>
+        <script type="text/javascript" src="/js/menu/footer.js"></script>
+    </footer>
+    <!-- /footer content -->
+</div>
+</div>
+
+<script language=javascript src="/js/main/create_table.js"></script>
+<script language=javascript src="/js/authority/ruth_manager.js"></script>
+<script src="../build/js/custom.min.js"></script>
+
+</body>
+</html>
